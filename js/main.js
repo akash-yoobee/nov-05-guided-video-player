@@ -1,13 +1,20 @@
 $(document).ready(function() {
 
-  const videoList = $('#video-list'),
-  player = $('#player');
+  const EL_VIDEO_LIST = $('#video-list'),
+  EL_PLAYER = $('#player')
+  EL_SEARCH_BOX = $('#search-box');
+  let videosArr = [];
 
   // https://www.w3schools.com/jquery/ajax_getjson.asp
   function init(){
     $.getJSON('json/videos.json', function(data){
-      displayVideos(data.videos);
-      addListners();
+      videosArr = data.videos;
+      displayVideos(videosArr);
+      // addClickListners();
+    });
+    EL_SEARCH_BOX.on('keyup', function(event){
+      event.preventDefault();
+      displayVideosByTitle($(this).val());
     });
   }
   
@@ -17,7 +24,8 @@ $(document).ready(function() {
     string += getVideoHtml(video);
   });
 
-  videoList.html(string);
+  EL_VIDEO_LIST.html(string);
+  addClickListners();
   }
   
   function getVideoHtml(video){
@@ -32,20 +40,30 @@ $(document).ready(function() {
     </div>
     `
   }
-  function addListners(){
+  function addClickListners(){
     $('.video-item').on('click', function(){
-      console.log($(this));
       let videoId = $(this).data('id');
       playVideo(videoId);
 
       // getting the HTML data attribute called id out 
       // let id = $(this).data('id')
-      // player.attr('src', `https://www.youtube.com/embed/<<<your ID here>>>?rel=0&modestbranding=1&autohide=1&mute=0&showinfo=0&controls=0&autoplay=1`)
+      // EL_PLAYER.attr('src', `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&autohide=1&mute=0&showinfo=0&controls=0&autoplay=1`)
     });
   }
 
   function playVideo(id){
-    player.attr('src', `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&autohide=1&mute=0&showinfo=0&controls=0&autoplay=1`)
+    EL_PLAYER.attr('src', `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&autohide=1&mute=0&showinfo=0&controls=0&autoplay=1`)
+  }
+
+  function displayVideosByTitle(title){
+    let filteredVideos = [];
+    
+    $.each(videosArr, function(i, video) {
+    if (video.title.includes(title)) {
+      filteredVideos.push(video);
+      }
+    });
+    displayVideos(filteredVideos);
   }
 
   init();
