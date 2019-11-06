@@ -1,0 +1,19 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "slug": "build-something",
+      "title": "How to Build"
+    },
+    {
+      "id": "2",
+      "slug": "maintain-something",
+      "title": "How to Maintain"
+    },
+    {
+      "id": "3",
+      "slug": "restore-something",
+      "title": "How to Restore"
+    }
+  ]
+}
