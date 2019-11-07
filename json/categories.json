@@ -2,17 +2,17 @@
   "categories": [
     {
       "id": "1",
-      "slug": "build-something",
+      "slug": "build",
       "title": "How to Build"
     },
     {
       "id": "2",
-      "slug": "maintain-something",
+      "slug": "maintain",
       "title": "How to Maintain"
     },
     {
       "id": "3",
-      "slug": "restore-something",
+      "slug": "restore",
       "title": "How to Restore"
     }
   ]
