@@ -4,7 +4,8 @@ $(document).ready(function() {
   EL_PLAYER = $('#player'),
   EL_SEARCH_BOX = $('#search-box'),
   EL_CATEGORY_LIST = $('#category-list');
-  // EL_CATEGORY_SEARCH_BOX = $('#search-category-box');
+  // Akash
+  EL_CATEGORY_SEARCH_BOX = $('#search-category-box');
   let videosArr = [];
   let categoriesArr =[];
 
@@ -24,12 +25,20 @@ $(document).ready(function() {
     });
     EL_SEARCH_BOX.on('keyup', function(event){
       event.preventDefault();
-      displayVideosByTitle($(this).val());
+      if(event.which === 13){
+        let video = getVideoById($(this).val())
+        if (video){
+          displayVideos([video]);
+        } else{
+          displayVideosByTitle($(this).val());
+        }
+      }
     });
-    // EL_CATEGORY_SEARCH_BOX.on('keyup', function(event){
-    //   event.preventDefault();
-    //   displayVideosByCategory($(this).val());
-    // });
+    // Akash
+    EL_CATEGORY_SEARCH_BOX.on('keyup', function(event){
+      event.preventDefault();
+      displayVideosByAkashCategory($(this).val());
+    });
   }
     function displayVideos(videos){
     let string ='';
@@ -97,16 +106,23 @@ $(document).ready(function() {
     });
     displayVideos(filteredVideos);
   }
-
-  // function displayVideosByCategory(category){
-  //   let filteredVideos = [];
-  //   $.each(videosArr, function(i, video) {
-  //   if (video.category.includes(category)) {
-  //     filteredVideos.push(video);
-  //     }
-  //   });
-  //   displayVideos(filteredVideos);
-  // }
+  // Akash
+  function displayVideosByAkashCategory(category){
+    let filteredVideos = [];
+    $.each(videosArr, function(i, video) {
+    if (video.category.includes(category)) {
+      filteredVideos.push(video);
+      }
+    });
+    displayVideos(filteredVideos);
+  }
+  function getVideoById(input){
+    for(let i = 0; i < videosArr.length; i++){
+      if (input === videosArr[i].id){
+        return videosArr[i];
+      }
+    }
+    return null;
+  }
   init();
-  console.log(categoriesArr);
 })
