@@ -13,6 +13,7 @@ $(document).ready(function() {
 
   // https://www.w3schools.com/jquery/ajax_getjson.asp
   function init(){
+    console.log (EL_SCREENS);
     $.getJSON('json/videos.json', function(data){
       videosArr = data.videos;
       displayVideos(videosArr);
@@ -23,7 +24,6 @@ $(document).ready(function() {
     $.getJSON('json/categories.json', function(data){
       categoriesArr = data.categories;
       displayCategories(categoriesArr);
-
     });
     EL_SEARCH_BOX.on('keyup', function(event){
       event.preventDefault();
