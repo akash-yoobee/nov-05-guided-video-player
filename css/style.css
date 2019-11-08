@@ -1,0 +1,33 @@
+body { background:#ccc; width:100%;}
+.menu {
+  width: 25%;
+  height: auto;
+  border:3px solid #1976d2;
+  background:#000; 
+  border-radius: 5px; 
+  object-position: 50% 50%;
+}
+
+.off { animation: turn-off 0.55s; animation-fill-mode:forwards; }
+.on { animation: turn-on 0.55s; animation-fill-mode:forwards; }
+
+@keyframes turn-off{
+  0% { transform:scale(1,1.3) translate3d(0,0,0);-webkit-filter:brightness(1);filter:brightness(1);opacity:1;}
+  60% { transform:scale(1.3,0.001) translate3d(0,0,0); -webkit-filter:brightness(10); filter:brightness(10); }
+  100%{ transform:scale(0.000,0.0001) translate3d(0,0,0); -webkit-filter:brightness(50); filter:brightness(50); }
+}
+  
+ @keyframes turn-on{
+   0%{ transform:scale(0.000,0.0001) translate3d(0,0,0); -webkit-filter:brightness(50); filter:brightness(50); }  
+  60% { transform:scale(1.3,0.001) translate3d(0,0,0); -webkit-filter:brightness(10); filter:brightness(10); }
+  100% { transform:scale(1,1) translate3d(0,0,0);-webkit-filter:brightness(1);filter:brightness(1);opacity:1;}  
+}
+.switch { background: #64b5f6; padding:10px; border-radius:10px;cursor:pointer;}
+
+.iframe-player{
+  width: 100%;
+  height: auto;
+  /* object-fit: fill; */
+  /* border: none; */
+  /* object-position: 50% 50%; */
+}

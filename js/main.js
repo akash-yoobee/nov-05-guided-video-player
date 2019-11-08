@@ -132,5 +132,15 @@ $(document).ready(function() {
     EL_SCREENS.hide();
     $('#' + $(this).data('screen')).show();
   }
+
+  // Akash webcam
+$('#switch').click(function(){ 
+  if ($(this).prop('checked')){
+      $('.menu').removeClass('off').addClass('on');
+  } else {
+     $('.menu').removeClass('on').addClass('off');
+  }
+});
   init();
 })
+
