@@ -3,7 +3,9 @@ $(document).ready(function() {
   const EL_VIDEO_LIST = $('#video-list'),
   EL_PLAYER = $('#player'),
   EL_SEARCH_BOX = $('#search-box'),
-  EL_CATEGORY_LIST = $('#category-list');
+  EL_CATEGORY_LIST = $('#category-list'),
+  EL_SCREEN_LINKS = $('.screen-link'),
+  EL_SCREENS = $('.screen'),
   // Akash
   EL_CATEGORY_SEARCH_BOX = $('#search-category-box');
   let videosArr = [];
@@ -34,7 +36,9 @@ $(document).ready(function() {
         }
       }
     });
-    // Akash
+    EL_SCREEN_LINKS.on('click', switchScreens);
+    EL_SCREENS.slice(1).hide();    
+      // Akash
     EL_CATEGORY_SEARCH_BOX.on('keyup', function(event){
       event.preventDefault();
       displayVideosByAkashCategory($(this).val());
@@ -123,6 +127,10 @@ $(document).ready(function() {
       }
     }
     return null;
+  }
+  function switchScreens(){
+    EL_SCREENS.hide();
+    $('#' + $(this).data('screen')).show();
   }
   init();
 })

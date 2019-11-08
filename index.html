@@ -14,7 +14,15 @@
 </head>
 <body>
   <div id="container">
-    <section>
+    <header>
+      <nav>
+        <ul>
+          <li><a class="screen-link" href="#" data-screen="home">Home</a></li>
+          <li><a  class="screen-link" href="#" data-screen="about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="screen" id="home">
       <form onsubmit="return false">
         <input id="search-box" type="text" name="search-box" value="" placeholder="Search by Video Name">
         <!-- Akash -->
@@ -27,6 +35,9 @@
     <div id="video-list">
     </div>
     <iframe src="" frameborder="0" id="player" title="YouTube Video Player"></iframe>
+    </section>
+    <section class="screen" id="about">
+      <h3>About</h3>
     </section>
   </div>
 </body>
